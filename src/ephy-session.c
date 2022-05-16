@@ -893,8 +893,7 @@ session_seems_reasonable (GList *windows)
         if (g_uri_get_host (uri) != NULL ||
             strcmp (g_uri_get_scheme (uri), "data") == 0 ||
             strcmp (g_uri_get_scheme (uri), "file") == 0 ||
-            strcmp (g_uri_get_scheme (uri), "ephy-reader") == 0 ||
-            strcmp (g_uri_get_scheme (uri), "ephy-pdf") == 0)
+            strcmp (g_uri_get_scheme (uri), "ephy-reader") == 0)
           sane = TRUE;
       }
 
