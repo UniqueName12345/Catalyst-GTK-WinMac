@@ -508,10 +508,11 @@ dialog_bookmarks_import_from_chromium (GtkWindow *parent)
 }
 
 static void
-dialog_bookmarks_import_cb (GtkWindow       *parent,
+dialog_bookmarks_import_cb (GtkDialog       *dialog,
                             GtkResponseType  response,
                             GtkComboBox     *combo_box)
 {
+  GtkWindow *parent = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (dialog)));
   const char *active;
 
   if (response == GTK_RESPONSE_OK) {
@@ -528,9 +529,9 @@ dialog_bookmarks_import_cb (GtkWindow       *parent,
       dialog_bookmarks_import_from_chromium (parent);
     else
       g_assert_not_reached ();
-  } else if (response == GTK_RESPONSE_CANCEL) {
-    gtk_widget_destroy (GTK_WIDGET (parent));
   }
+
+  gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 void
@@ -758,9 +759,9 @@ dialog_passwords_import_cb (GtkDialog   *dialog,
       ephy_password_import_from_chrome_async (manager, CHROMIUM, dialog_password_import_cb, dialog);
     else
       g_assert_not_reached ();
-  } else {
-    gtk_widget_destroy (GTK_WIDGET (dialog));
   }
+
+  gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 static void
