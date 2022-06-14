@@ -39,6 +39,7 @@ window.browser.tabs = {
     onRemoved: new EphyEventListener (),
     onUpdated: new EphyEventListener (),
     onZoomChange: new EphyEventListener (),
+    onReplaced: new EphyEventListener (),
     TAB_ID_NONE: -1,
 };
 
