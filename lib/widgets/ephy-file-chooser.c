@@ -128,7 +128,6 @@ ephy_create_file_chooser (const char            *title,
     filter[EPHY_FILE_FILTER_ALL_SUPPORTED] =
       ephy_file_chooser_add_mime_filter
         (dialog,
-        _("All supported types"),
         "text/html",
         "application/xhtml+xml",
         "text/xml",
@@ -144,13 +143,8 @@ ephy_create_file_chooser (const char            *title,
 
     filter[EPHY_FILE_FILTER_WEBPAGES] =
       ephy_file_chooser_add_mime_filter
-        (dialog, _("Web pages"),
+        (dialog, _("HTML"),
         "text/html",
-        "application/xhtml+xml",
-        "text/xml",
-        "message/rfc822",                                     /* MHTML */
-        "multipart/related",                                  /* MHTML */
-        "application/x-mimearchive",                          /* MHTML */
         NULL);
 
     filter[EPHY_FILE_FILTER_IMAGES] =
@@ -158,8 +152,13 @@ ephy_create_file_chooser (const char            *title,
         (dialog, _("Images"),
         "image/png",
         "image/jpeg",
-        "image/gif",
         "image/webp",
+        NULL);
+
+    filter[CTLYST_FILE_FILTER_ANIM] =
+      ephy_file_chooser_add_mime_filter
+        (dialog, _("Animated Images"),
+        "image/gif",
         NULL);
 
     filter[EPHY_FILE_FILTER_ALL] =
