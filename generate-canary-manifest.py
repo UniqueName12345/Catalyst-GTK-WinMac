@@ -53,7 +53,7 @@ def download_zipped_build(build_type):
 
     def update(blocks, bs, size):
         done = int(50 * blocks * bs / size)
-        sys.stdout.write('\r[{}{}]'.format('█' * done, '.' * (50 - done)))
+        sys.stdout.write(f"\r[{'█' * done}{'.' * (50 - done)}]")
         sys.stdout.flush()
 
     urllib.request.urlretrieve(f"{url}/{latest}", ZIP_FILE, update)

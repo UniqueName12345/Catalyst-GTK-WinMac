@@ -72,8 +72,7 @@ openingCurlyBraceRegex = re.compile(r'^{\s*$')
 
 
 def matchFunctionName(line):
-    match = functionNameRegex.match(line)
-    if match:
+    if match := functionNameRegex.match(line):
         functionName = match.group(1)
         firstParamPosition = match.end(0)
         return (functionName, firstParamPosition)
@@ -99,12 +98,12 @@ def matchParameter(line):
     stars = match.group('stars')
     numStars = len(stars) if stars is not None else 0
     end = match.group('end')
-    isLastParameter = True if end is not None and end == ')' else False
+    isLastParameter = end is not None and end == ')'
     return ParameterInfo(paramType, name, numStars, isLastParameter)
 
 
 def matchOpeningCurlyBrace(line):
-    return True if openingCurlyBraceRegex.match(line) is not None else False
+    return openingCurlyBraceRegex.match(line) is not None
 
 
 # Length returned is number of lines the declaration takes up
@@ -125,10 +124,7 @@ def getFunctionDeclarationLength(remainingLines):
 
 
 def getParameterInfos(remainingLines, length):
-    parameterInfos = []
-    for i in range(length):
-        parameterInfos.append(matchParameter(remainingLines[i]))
-    return parameterInfos
+    return [matchParameter(remainingLines[i]) for i in range(length)]
 
 
 def computeSpacing(parameterInfos):
