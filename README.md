@@ -33,12 +33,7 @@ application distribution mechanism for Linux.
 
 ### The Easy Way
 
-The recommended way to build Epiphany locally is using the flatpak-builder
-manifest with GNOME Builder. After installing Builder and launching it, you'll
-see the Select a Project page. Select Open, then select the toplevel Epiphany
-directory. Builder will detect the org.gnome.Epiphany.json flatpak-builder
-manifest and you will be able to build the project in Builder. All required
-dependencies will be provided by the manifest.
+The easy way (using flatpak-builder) is not supported on windows, so you have to do it manually using meson build. 🙁
 
 ### Building Manually
 
@@ -61,27 +56,9 @@ dependency, meson will present an error that looks like this:
 meson.build:84:0: ERROR:  Native dependency 'hogweed' not found
 ```
 
-In RPM-based distributions, you can install the missing dependencies
-automatically. For example, in Fedora:
-
-```
-$ sudo dnf install 'pkgconfig(hogweed)'
-```
-
-In deb-based distributions:
-
-```
-$ sudo apt install $(apt-file search --package-only hogweed)
-```
-
-In other distributions, you must research each dependency to determine which
+Since Windows uses a different OS (NT), and MacOS uses BSD, you must research each dependency to determine which
 package provides the required pkg-config file.
 
-### Rebuilding Dependencies
-
-If you need to rebuild dependencies, the recommended solution is to use JHBuild.
-See [the development page](https://wiki.gnome.org/Apps/Web/Development#Step_3:_Developing_Dependencies_with_Epiphany)
-for more information.
 
 ## Manifesto
 
@@ -119,7 +96,7 @@ Just as GNOME exists to oppose proprietary desktop software, Epiphany opposes
 the dominance of the web by proprietary software web browsers. Today's chief
 offender is Google Chrome, a browser that purports to be open source, yet
 actually includes several proprietary components. In contrast, Epiphany is fully
-free software.
+free software. Of course, Windows and MacOS aren't open source, so I suggest you switch to Linux _now_. Please. 🥺
 
 ## Human Interface
 
@@ -131,7 +108,7 @@ guidelines will be considered a bug.
 
 Epiphany's main goal is to be integrated with GNOME, as well as similar
 desktops (notably elementary OS). We don't aim to make Epiphany usable outside
-these environments.
+these environments. At least not officially.
 
 ### Preferences
 
@@ -150,9 +127,5 @@ web inspector, are welcome so long as they are non-obtrusive.
 ## Website
 
 [Epiphany has a website,](https://wiki.gnome.org/Apps/Web) though there is not
-very much content there.
+very much content there. For Windows users, there is not a website.
 
-## Contact Us
-
-The recommended way to contact us is via the Epiphany mailing list
-<epiphany-list@gnome.org>.
